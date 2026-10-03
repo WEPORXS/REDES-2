@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Panel académico para visualizar el estado energético de aulas mediante MQTT." />
+    <title>Panel de energía | Aulas IoT</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <img class="upn-logo" src="/logo-upn-nuevo.svg" alt="Universidad Privada del Norte" />
+          <!-- <p class="eyebrow">PROYECTO ACADÉMICO · MQTT + ESP32</p> -->
+          <h1>Panel de ahorro energético</h1>
+          <p class="subtitle">Monitoreo de aulas conectadas.</p>
+        </div>
+        <div class="connection-card" aria-live="polite">
+          <span id="connection-dot" class="connection-dot"></span>
+          <div>
+            <strong id="connection-label">Conectando al broker MQTT</strong>
+            <!-- <small id="connection-detail">Esperando telemetría...</small> -->
+          </div>
+        </div>
+      </header>
+
+      <!-- <section class="legend" aria-label="Leyenda del panel">
+        <span><i class="legend-dot live"></i> Aulas 01–06: preparadas para datos MQTT reales</span>
+        <span id="last-refresh">Actualizando panel...</span>
+      </section> -->
+
+      <section id="rooms" class="rooms-grid" aria-live="polite" aria-label="Estado de aulas"></section>
+      <p id="error-message" class="error-message" role="alert"></p>
+    </main>
+
+    <template id="room-template">
+      <article class="room-card">
+        <header class="room-header">
+          <div>
+            <p class="room-mode"></p>
+            <h2 class="room-name"></h2>
+          </div>
+          <span class="room-status"></span>
+        </header>
+        <div class="metrics">
+          <div class="metric"><span class="metric-icon">◉</span><div><small>Presencia</small><strong class="presence-value"></strong></div></div>
+          <div class="metric"><span class="metric-icon">☀</span><div><small>Iluminación</small><strong class="light-value"></strong></div></div>
+          <div class="metric"><span class="metric-icon">◉</span><div><small>Lámpara</small><strong class="lamp-value"></strong></div></div>
+        </div>
+        <footer class="room-footer"><span>Última actualización</span><time class="updated-value"></time></footer>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
